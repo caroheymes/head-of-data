@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="drawio" version="26.0.0">
+  <diagram id="groupe-x-azure-microservices-v1" name="Architecture Azure Microservices Groupe X">
+    <mxGraphModel dx="1920" dy="1080" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" math="0" shadow="0" background="none">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="2" value="Architecture découplée Azure hors Fabric du groupe X (micro-services, MLOps &amp; vitrine Power BI, vague 1: 19 semaines)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0f172a;fontColor=#ffffff;fontSize=17;fontStyle=1;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1800" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="10" value="1. Sources opérationnelles du groupe X" style="swimlane;startSize=36;rounded=1;arcSize=4;fillColor=#f8fafc;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;pointerEvents=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="90" width="300" height="710" as="geometry" />
+        </mxCell>
+
+        <mxCell id="11" value="PMS interne Lxxxx&#xa;(~80 sites, salles, séjours,&#xa;Options de rang 1 &amp; Participants)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#1e293b;fontSize=11;fontStyle=1;" vertex="1" parent="10">
+          <mxGeometry x="20" y="55" width="260" height="85" as="geometry" />
+        </mxCell>
+
+        <mxCell id="12" value="Microsoft Dynamics 365 Sales&#xa;(~150 conseillers B2B, opportunités,&#xa;devis &amp; historique commercial)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#1e293b;fontSize=11;fontStyle=1;" vertex="1" parent="10">
+          <mxGeometry x="20" y="165" width="260" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="13" value="Grilles tarifaires Groupe&#xa;&amp; matrice temps d'accès&#xa;train / gares européennes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#1e293b;fontSize=11;" vertex="1" parent="10">
+          <mxGeometry x="20" y="270" width="260" height="75" as="geometry" />
+        </mxCell>
+
+        <mxCell id="14" value="Esker &amp; Cegid&#xa;(factures achats F&amp;B, fluides&#xa;énergie &amp; comptabilité 7 pays)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#1e293b;fontSize=11;fontStyle=1;" vertex="1" parent="10">
+          <mxGeometry x="20" y="370" width="260" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="15" value="Skello&#xa;(plannings horaires &amp; pointages&#xa;terrain Sites, Traiteur, In-Situ)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#1e293b;fontSize=11;" vertex="1" parent="10">
+          <mxGeometry x="20" y="475" width="260" height="75" as="geometry" />
+        </mxCell>
+
+        <mxCell id="16" value="Base Empreinte ADEME,&#xa;facteurs électriques AIE par pays&#xa;&amp; référentiel SaaS bilan carbone" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#1e293b;fontSize=11;" vertex="1" parent="10">
+          <mxGeometry x="20" y="575" width="260" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="20" value="2. Socle data &amp; MLOps découplé sur Azure hors Fabric (France Central, conteneurs Docker / Terraform)" style="swimlane;startSize=36;rounded=1;arcSize=4;fillColor=#f8fafc;strokeColor=#334155;fontColor=#0f172a;fontSize=13;fontStyle=1;pointerEvents=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="90" width="960" height="710" as="geometry" />
+        </mxCell>
+
+        <mxCell id="21" value="Sas Python dlt conteneurisé&#xa;Hachage salé SHA-256 en mémoire&#xa;(exclusion nominatif &amp; art. 9 RGPD)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#1e293b;fontSize=11;fontStyle=1;" vertex="1" parent="20">
+          <mxGeometry x="30" y="60" width="205" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="22" value="Apache Airflow (Container Apps)&#xa;DAGs 15 min (CRM/Lxxxx), quotidiens&#xa;ERP &amp; alertes webhooks Teams" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#1e293b;fontSize=11;fontStyle=1;" vertex="1" parent="20">
+          <mxGeometry x="30" y="210" width="205" height="115" as="geometry" />
+        </mxCell>
+
+        <mxCell id="23" value="Schémas transactionnels PostgreSQL&#xa;(app_ops.biowaste_entry &amp; seuils&#xa;CRM/wash, écritures idempotentes)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#1e293b;fontSize=11;fontStyle=1;" vertex="1" parent="20">
+          <mxGeometry x="30" y="365" width="205" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="24" value="PostgreSQL schémas Bronze&#xa;Brut haché append-only&#xa;(purge sas temporaire &lt;= 30 j)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#1e293b;fontSize=11;" vertex="1" parent="20">
+          <mxGeometry x="280" y="60" width="215" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="25" value="PostgreSQL Silver (dbt Core)&#xa;Compte B2B unifié (SIREN/TVA),&#xa;jauges &amp; facteurs carbone versionnés" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#1e293b;fontSize=11;fontStyle=1;" vertex="1" parent="20">
+          <mxGeometry x="280" y="210" width="215" height="115" as="geometry" />
+        </mxCell>
+
+        <mxCell id="26" value="PostgreSQL Gold (3 domaines)&#xa;Vues contrats SQL en lecture seule&#xa;(Séminaires, Événementiel, In-Situ &amp; CA)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#1e293b;fontSize=11;fontStyle=1;" vertex="1" parent="20">
+          <mxGeometry x="280" y="365" width="215" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="27" value="Usine MLOps conteneurisée&#xa;Pandas &amp; scikit-learn (baseline&#xa;puis modèle) + registre MLflow" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#1e293b;fontSize=11;fontStyle=1;" vertex="1" parent="20">
+          <mxGeometry x="540" y="60" width="195" height="115" as="geometry" />
+        </mxCell>
+
+        <mxCell id="28" value="Data lineage OpenLineage&#xa;Graphe à la colonne (Airflow + dbt)&#xa;Catalogue open source ou SaaS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#1e293b;fontSize=11;fontStyle=1;" vertex="1" parent="20">
+          <mxGeometry x="540" y="210" width="195" height="115" as="geometry" />
+        </mxCell>
+
+        <mxCell id="29" value="Micro-services FastAPI&#xa;Matching CRM, saisie biodéchets&#xa;&amp; certificats PDF/JSON (scope 3)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#1e293b;fontSize=11;fontStyle=1;" vertex="1" parent="20">
+          <mxGeometry x="540" y="365" width="195" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="30" value="Vitrine Power BI / TMDL&#xa;Lecture seule Gold (équipe BI)&#xa;Option 3 -&gt; arbitrage Option 1 S19" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#1e293b;fontSize=11;fontStyle=1;" vertex="1" parent="20">
+          <mxGeometry x="770" y="210" width="165" height="115" as="geometry" />
+        </mxCell>
+
+        <mxCell id="31" value="Ingress Container Apps&#xa;TLS 1.3, SSO OAuth2 Entra ID&#xa;&amp; quotas NIS2 (zéro coût APIM)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#1e293b;fontSize=11;fontStyle=1;" vertex="1" parent="20">
+          <mxGeometry x="770" y="365" width="165" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="32" value="Socle transverse Gouvernance, Sécurité, MLOps &amp; Sobriété FinOps (zéro Spark, portabilité Docker complète)&#xa;RLS symétrique PostgreSQL + TMDL Entra ID par site, pays et Contrat In-Situ (NIS2 art. 21) | Lignage à la colonne OpenLineage &amp; Git dbt (opposable OTI &amp; CSRD)&#xa;FinOps: socle PostgreSQL + Container Apps ~340 à 405 € HT/mois (~650 à 700 € vitrine BI incluse, soit 8 fois moins que Fabric F64 + APIM) | AI Act art. 50 &amp; verrou J-5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#1e293b;fontSize=11;align=center;" vertex="1" parent="20">
+          <mxGeometry x="30" y="535" width="905" height="135" as="geometry" />
+        </mxCell>
+
+        <mxCell id="40" value="3. Surfaces d'usage terrain &amp; 3 POC (greffe légère)" style="swimlane;startSize=36;rounded=1;arcSize=4;fillColor=#f8fafc;strokeColor=#475569;fontColor=#0f172a;fontSize=13;fontStyle=1;pointerEvents=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="90" width="380" height="710" as="geometry" />
+        </mxCell>
+
+        <mxCell id="41" value="POC 1 (semaines 1 à 6): commercial &amp; options&#xa;Composant PCF Dynamics 365 sur FastAPI (Copilot)&#xa;3 sites de repli + bascule Événementiel (&gt; 250 pers.)&#xa;File matinale des Options de rang 1 à risque" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#1e293b;fontSize=11;fontStyle=1;" vertex="1" parent="40">
+          <mxGeometry x="25" y="60" width="330" height="155" as="geometry" />
+        </mxCell>
+
+        <mxCell id="42" value="POC 2 (semaines 7 à 13): attrition wash &amp; marge&#xa;Rapports Power BI + alertes webhooks Teams J-14 / J-5&#xa;Baseline puis modèle calibré (frais F&amp;B &amp; Skello)&#xa;Contrôle marge Traiteur + app Streamlit biodéchets" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#1e293b;fontSize=11;fontStyle=1;" vertex="1" parent="40">
+          <mxGeometry x="25" y="255" width="330" height="175" as="geometry" />
+        </mxCell>
+
+        <mxCell id="43" value="POC 3 (semaines 14 à 19): carbone &amp; CSRD scope 3&#xa;Comparateur carbone prévisionnel intégré au devis&#xa;Certificat scope 3 (cat. 3.1 &amp; 3.6) PDF/JSON à J+5&#xa;Dépôt CRM, portail grands comptes &amp; arbitrage FinOps S19" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#1e293b;fontSize=11;fontStyle=1;" vertex="1" parent="40">
+          <mxGeometry x="25" y="470" width="330" height="175" as="geometry" />
+        </mxCell>
+
+        <mxCell id="50" value="Légende des composants" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#64748b;fontColor=#0f172a;fontSize=11;fontStyle=1;verticalAlign=top;align=left;spacingLeft=14;pointerEvents=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="820" width="1800" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="51" value="" style="rounded=1;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="50">
+          <mxGeometry x="20" y="32" width="28" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="52" value="CRM, transformations dbt Silver &amp; vitrine Power BI" style="text;html=1;align=left;verticalAlign=middle;fontColor=#1e293b;fontSize=11;" vertex="1" parent="50">
+          <mxGeometry x="56" y="30" width="280" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="53" value="" style="rounded=1;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="50">
+          <mxGeometry x="355" y="32" width="28" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="54" value="Bases opérationnelles &amp; schémas Gold PostgreSQL" style="text;html=1;align=left;verticalAlign=middle;fontColor=#1e293b;fontSize=11;" vertex="1" parent="50">
+          <mxGeometry x="391" y="30" width="285" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="55" value="" style="rounded=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="50">
+          <mxGeometry x="695" y="32" width="28" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="56" value="Sources ERP/RH &amp; usine MLOps (Pandas / MLflow)" style="text;html=1;align=left;verticalAlign=middle;fontColor=#1e293b;fontSize=11;" vertex="1" parent="50">
+          <mxGeometry x="731" y="30" width="295" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="57" value="" style="rounded=1;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="50">
+          <mxGeometry x="1045" y="32" width="28" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="58" value="Orchestration Airflow, FastAPI &amp; Ingress Entra ID" style="text;html=1;align=left;verticalAlign=middle;fontColor=#1e293b;fontSize=11;" vertex="1" parent="50">
+          <mxGeometry x="1081" y="30" width="305" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="59" value="" style="rounded=1;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="50">
+          <mxGeometry x="1410" y="32" width="28" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="60" value="Sas RGPD SHA-256, RLS PostgreSQL &amp; OpenLineage" style="text;html=1;align=left;verticalAlign=middle;fontColor=#1e293b;fontSize=11;" vertex="1" parent="50">
+          <mxGeometry x="1446" y="30" width="325" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="101" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.45;entryDx=0;entryDy=0;" edge="1" parent="1" source="11" target="21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="102" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="12" target="22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="103" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="104" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.7;entryDx=0;entryDy=0;" edge="1" parent="1" source="14" target="22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="500" />
+              <mxPoint x="370" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="105" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.82;entryDx=0;entryDy=0;" edge="1" parent="1" source="15" target="22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="385" y="602" />
+              <mxPoint x="385" y="394" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="106" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.92;entryDx=0;entryDy=0;" edge="1" parent="1" source="16" target="22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="705" />
+              <mxPoint x="400" y="405" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="107" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.45;entryDx=0;entryDy=0;" edge="1" parent="1" source="21" target="24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="108" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endSize=8;exitX=1;exitY=0.4;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="22" target="24">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="675" y="346" />
+              <mxPoint x="675" y="232" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="109" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="23" target="25">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="675" y="515" />
+              <mxPoint x="675" y="386" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="110" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=2;endArrow=block;endSize=8;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="24" target="25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="111" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=2;endArrow=block;endSize=8;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="25" target="26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="112" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endSize=8;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="25" target="27">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="935" y="335" />
+              <mxPoint x="935" y="208" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="113" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#b45309;strokeWidth=1.5;dashed=1;endArrow=block;endSize=8;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.85;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="27" target="26">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1008" y="285" />
+              <mxPoint x="920" y="285" />
+              <mxPoint x="920" y="435" />
+              <mxPoint x="895" y="435" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="114" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#9673a6;strokeWidth=1.5;dashed=1;endArrow=block;endSize=8;exitX=1;exitY=0.6;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="25" target="28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="115" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endSize=8;exitX=1;exitY=0.65;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="26" target="29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="116" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6c8ebf;strokeWidth=1.5;endArrow=block;endSize=8;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="26" target="30">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="945" y="485" />
+              <mxPoint x="945" y="435" />
+              <mxPoint x="1175" y="435" />
+              <mxPoint x="1175" y="358" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="117" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#475569;strokeWidth=1.5;endArrow=block;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="29" target="31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="118" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d79b00;strokeWidth=2;endArrow=block;endSize=8;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="31" target="41">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1415" y="491" />
+              <mxPoint x="1415" y="228" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="119" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6c8ebf;strokeWidth=2;endArrow=block;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.4;entryDx=0;entryDy=0;" edge="1" parent="1" source="30" target="42">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1400" y="358" />
+              <mxPoint x="1400" y="415" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="120" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d79b00;strokeWidth=2;endArrow=block;endSize=8;exitX=1;exitY=0.7;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="31" target="43">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1415" y="539" />
+              <mxPoint x="1415" y="648" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="121" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82b366;strokeWidth=1.5;dashed=1;endArrow=block;endSize=8;exitX=0;exitY=0.8;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="42" target="23">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1435" y="485" />
+              <mxPoint x="1435" y="595" />
+              <mxPoint x="552" y="595" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
